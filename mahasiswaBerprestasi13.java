@@ -1,4 +1,4 @@
-package Praktikum5;
+
 
 public class mahasiswaBerprestasi13 {
     mahasiswa13[] listMhs;
@@ -67,6 +67,36 @@ public class mahasiswaBerprestasi13 {
                 j--;
             }
             listMhs[j] = temp;
+        }
+    }
+
+    int sequentialSearching(double cari) {
+        int posisi = -1;
+        for (int j = 0; j < listMhs.length; j++) {
+            if (listMhs[j].ipk == cari) {
+                posisi = j;
+                break;
+            }
+        }
+        return posisi;
+    }
+
+    void tampilPoisisi(double x, int pos) {
+        if (pos != -1) {
+            System.out.println("data mahasiswa dengan IPK " + x + " ditemukan pada indeks " + pos);
+        } else {
+            System.out.println("data " + x + " tidak ditemukan");
+        }
+    }
+
+    void tampilDataSearch(double x, int pos) {
+        if (pos != -1) {
+            System.out.println("nim\t : " + listMhs[pos].nim);
+            System.out.println("nama\t : " + listMhs[pos].nama);
+            System.out.println("kelas\t : " + listMhs[pos].kelas);
+            System.out.println("ipk\t : " + x);
+        } else {
+            System.out.println("Data mahasiswa dengan IPK " + x + " tidak ditemukan");
         }
     }
 }
