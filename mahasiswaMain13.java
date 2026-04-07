@@ -46,12 +46,12 @@ public class mahasiswaMain13 {
 class MahasiswaDemo13 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int jumlahMhs = 5;
+        
+        System.out.print("Masukkan jumlah mahasiswa: ");
+        int jumlahMhs = sc.nextInt();
+        sc.nextLine();
         
         mahasiswaBerprestasi13 list = new mahasiswaBerprestasi13(jumlahMhs);
-        
-        // Array pilihan IPK yang tersedia
-        double[] ipkOptions = {3.0, 3.1, 3.2, 3.5, 3.7, 3.9};
         
         for (int i = 0; i < jumlahMhs; i++) {
             System.out.println("Masukkan Data Mahasiswa ke-" + (i + 1));
@@ -64,15 +64,9 @@ class MahasiswaDemo13 {
             System.out.print("Kelas : ");
             String kelas = sc.nextLine();
             
-            System.out.println("Pilih IPK:");
-            for (int j = 0; j < ipkOptions.length; j++) {
-                System.out.println((j + 1) + ". " + ipkOptions[j]);
-            }
-            System.out.print("Pilihan (1-" + ipkOptions.length + ") : ");
-            int pilihan = sc.nextInt();
+            System.out.print("IPK : ");
+            double ipk = sc.nextDouble();
             sc.nextLine();
-            
-            double ipk = ipkOptions[pilihan - 1];
             
             mahasiswa13 m = new mahasiswa13(nim, nama, kelas, ipk);
             list.tambah(m);
@@ -85,15 +79,8 @@ class MahasiswaDemo13 {
         list.selectionSort();
         list.tampil();
         
-        System.out.println("\nPilih IPK mahasiswa yang dicari:");
-        for (int j = 0; j < ipkOptions.length; j++) {
-            System.out.println((j + 1) + ". " + ipkOptions[j]);
-        }
-        System.out.print("Pilihan (1-" + ipkOptions.length + ") : ");
-        int pilihan = sc.nextInt();
-        sc.nextLine();
-        
-        double cari = ipkOptions[pilihan - 1];
+        System.out.print("\nMasukkan IPK mahasiswa yang dicari : ");
+        double cari = sc.nextDouble();
         System.out.println("\nMenggunakan binary searching");
         
         int posisiFound = list.findBinarySearch(cari, 0, jumlahMhs - 1);
