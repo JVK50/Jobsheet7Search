@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class mahasiswaMain13 {
@@ -71,14 +70,31 @@ class MahasiswaDemo13 {
         }
         
         System.out.println("\n=============================");
-        System.out.println("Pencarian data");
+        System.out.println("Pencarian data Binary");
         System.out.println("=============================");
-        System.out.print("Masukkan IPK mahasiswa yang dicari : ");
-        double cari = sc.nextDouble();
-        System.out.println("\nmengunakan sequential searching");
+        System.out.println("Mengurutkan data terlebih dahulu (ASC)");
+        list.selectionSort();
+        list.tampil();
         
-        int pss = list.sequentialSearching(cari);
-        list.tampilPoisisi(cari, pss);
-        list.tampilDataSearch(cari, pss);
+        System.out.print("\nMasukkan IPK mahasiswa yang dicari : ");
+        double cari = sc.nextDouble();
+        System.out.println("\nMenggunakan binary searching");
+        
+        int posisiFound = list.findBinarySearch(cari, 0, jumlahMhs - 1);
+        int[] allPositions = list.findAllOccurrences(cari, posisiFound);
+        
+        if (allPositions.length > 0) {
+            System.out.println("Data mahasiswa dengan IPK " + cari + " ditemukan pada indeks: ");
+            for (int i = 0; i < allPositions.length; i++) {
+                System.out.print(allPositions[i]);
+                if (i < allPositions.length - 1) {
+                    System.out.print(", ");
+                }
+            }
+            System.out.println();
+        }
+        
+        list.tampilAllDataSearch(cari, allPositions);
+        sc.close();
     }
 }
